@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+</head>
+<body>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #4070f4;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .wrappet {
+        position: relative;
+        max-width: 430px;
+        width: 100%;
+        background: #fff;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .wrappet:hover {
+        transform: translateY(-10px);
+    }
+
+    .wrappet h2 {
+        position: relative;
+        font-size: 24px;
+        font-weight: 600;
+        color: #300;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .wrappet h2::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        height: 3px;
+        width: 40px;
+        border-radius: 12px;
+        background: #4070f4;
+    }
+
+    .wrappet form {
+        margin-top: 20px;
+    }
+
+    .input-box {
+        height: 55px;
+        margin: 18px 0;
+    }
+
+    .input-box input {
+        height: 100%;
+        width: 100%;
+        outline: none;
+        padding: 0 15px;
+        font-size: 16px;
+        font-weight: 400;
+        color: #333;
+        border: 1.5px solid #C7BEBE;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+    }
+
+    .input-box input:focus,
+    .input-box input:valid {
+        border-color: #4070f4;
+        box-shadow: 0 0 5px rgba(64, 112, 244, 0.5);
+    }
+
+    .input-box.button input {
+        color: #fff;
+        letter-spacing: 1px;
+        border: none;
+        background: #4070f4;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    .input-box.button input:hover {
+        background: #0e4bf1;
+        transform: scale(1.05);
+        transition: all 0.3s ease;
+    }
+
+    form.text h3 a {
+        color: #4070f4;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    form.text h3 a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+        .wrappet {
+            padding: 25px;
+        }
+
+        .wrappet h2 {
+            font-size: 20px;
+        }
+
+        .input-box input {
+            font-size: 15px;
+        }
+    }
+
+</style>
+<div class="container">
+    <div class="wrappet">
+        <h2>Login</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-box">
+                <input type="username" name="username" placeholder="USERNAME" required>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" placeholder="PAROLINGIZ" required>
+            </div>
+            <button type="submit">Kirish</button>
+            {% if message %}
+                <h4>{{ message }}</h4>
+            {% endif %}
+            <div class="policy">
+                <input type="checkbox">
+                <h3>Akkount saqlansinmi <a href="{% url 'parol' %}">Parolingizni unutdingizmi?</a></h3>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

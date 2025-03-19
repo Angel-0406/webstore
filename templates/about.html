@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mebellar</title>
+</head>
+<body>
+<h2> MEBELLAR RO'YXATI</h2>
+<ul>
+    {% for furniture in mebel %}
+    <a href="{% url 'detail' furniture.pk %}">
+    <li>{{ furniture.nomi }}</li>
+    </a>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
